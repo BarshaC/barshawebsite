@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barsha's Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --rose:    #e11d48;
+            --rose-dark: #9f1239;
+            --amber:   #f59e0b;
+            --text:    #1a0a0a;
+            --muted:   #78716c;
+            --border:  #f0e0d8;
+            --bg:      #fdf8f5;
+            --white:   #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ── Nav ── */
+        .nav {
+            background: rgba(253,248,245,0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.9rem 0;
+        }
+
+        .nav-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-back {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--rose);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: gap 0.2s ease;
+        }
+
+        .nav-back:hover { gap: 0.6rem; }
+
+        .nav-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            opacity: 0.6;
+        }
+
+        /* ── Header ── */
+        .blog-header {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 64px 24px 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .blog-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-header p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 520px;
+            line-height: 1.75;
+        }
+
+        /* ── Posts ── */
+        .posts {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 80px 0;
+            color: var(--muted);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1.25rem;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .empty-state h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.6rem;
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Post card (for when posts are added) */
+        .post-card {
+            display: block;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: opacity 0.2s ease;
+        }
+
+        .post-card:first-child { padding-top: 0; }
+
+        .post-card:hover { opacity: 0.75; }
+
+        .post-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--rose);
+            margin-bottom: 0.6rem;
+        }
+
+        .post-card h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-card p {
+            font-size: 0.97rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+            max-width: 600px;
+        }
+
+        .post-meta {
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 24px;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--muted);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        footer a {
+            color: var(--rose);
+            font-weight: 600;
+        }
+
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-back">← Portfolio</a>
+            <span class="nav-title">Blog</span>
+        </div>
+    </nav>
+
+    <header class="blog-header">
+        <h1>Writing things down.</h1>
+        <p>Thoughts on tech, my journey, and whatever's on my mind. Not a newsletter. Just honest writing.</p>
+    </header>
+
+    <main class="posts">
+
+        <!-- Empty state — remove this block once posts are added -->
+        <div class="empty-state">
+            <span class="empty-icon">✍️</span>
+            <h2>First post coming soon</h2>
+            <p>I'm working on it. Check back in a bit — there's a lot I want to say.</p>
+        </div>
+
+        <!-- Post template — copy and paste this block for each new post:
+
+        <a href="#" class="post-card">
+            <p class="post-tag">Journey</p>
+            <h2>Post title goes here</h2>
+            <p>A short description or excerpt from the post. Two or three sentences that make someone want to read more.</p>
+            <span class="post-meta">Month DD, YYYY · X min read</span>
+        </a>
+
+        -->
+
+    </main>
+
+    <footer>
+        <p>By <a href="index.html">Barsha Chaudhary</a> · <a href="mailto:barshachy00@gmail.com">barshachy00@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>

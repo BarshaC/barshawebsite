@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barsha Chaudhary — Resume</title>
+    <style>
+        /* ─── Base ─────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --blue: #2563eb;
+            --blue-light: #dbeafe;
+            --dark: #111827;
+            --mid: #374151;
+            --light: #6b7280;
+            --border: #e5e7eb;
+            --bg: #f9fafb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            line-height: 1.55;
+            color: var(--dark);
+            background: var(--bg);
+        }
+
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ─── Print toolbar (hidden when printing) ──────────── */
+        .toolbar {
+            background: var(--blue);
+            color: white;
+            padding: 12px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .toolbar span { font-size: 14px; opacity: 0.9; }
+
+        .toolbar-actions { display: flex; gap: 12px; }
+
+        .btn-print {
+            background: white;
+            color: var(--blue);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-print:hover { opacity: 0.85; }
+
+        .btn-back {
+            color: white;
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            background: transparent;
+            text-decoration: none;
+        }
+
+        .btn-back:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+
+        /* ─── Page wrapper ──────────────────────────────────── */
+        .page {
+            max-width: 850px;
+            margin: 32px auto;
+            background: white;
+            padding: 48px 56px;
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        /* ─── Header ────────────────────────────────────────── */
+        .resume-header {
+            border-bottom: 2px solid var(--blue);
+            padding-bottom: 20px;
+            margin-bottom: 28px;
+        }
+
+        .resume-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.3px;
+        }
+
+        .resume-header .title {
+            font-size: 15px;
+            color: var(--blue);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 20px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--mid);
+        }
+
+        .contact-row a { color: var(--mid); }
+        .contact-row a:hover { color: var(--blue); }
+
+        /* ─── Section ───────────────────────────────────────── */
+        .section {
+            margin-bottom: 26px;
+        }
+
+        .section-heading {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--blue);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            margin-bottom: 14px;
+        }
+
+        /* ─── Entry (job / project) ─────────────────────────── */
+        .entry {
+            margin-bottom: 18px;
+        }
+
+        .entry:last-child { margin-bottom: 0; }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .entry-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .entry-date {
+            font-size: 12px;
+            color: var(--light);
+            white-space: nowrap;
+        }
+
+        .entry-subtitle {
+            font-size: 13px;
+            color: var(--blue);
+            font-weight: 600;
+            margin-top: 1px;
+        }
+
+        .entry-location {
+            font-size: 12px;
+            color: var(--light);
+        }
+
+        .entry ul {
+            margin-top: 6px;
+            padding-left: 18px;
+        }
+
+        .entry li {
+            font-size: 13px;
+            color: var(--mid);
+            margin-bottom: 3px;
+            line-height: 1.5;
+        }
+
+        /* ─── Skills ────────────────────────────────────────── */
+        .skills-table {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 6px 16px;
+            font-size: 13px;
+        }
+
+        .skills-label {
+            font-weight: 600;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .skills-value { color: var(--mid); }
+
+        /* ─── Education ─────────────────────────────────────── */
+        .edu-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .edu-school { font-weight: 700; font-size: 14px; }
+        .edu-degree { font-size: 13px; color: var(--mid); margin-top: 2px; }
+        .edu-gpa { font-size: 13px; color: var(--blue); font-weight: 600; margin-top: 2px; }
+        .edu-date { font-size: 12px; color: var(--light); white-space: nowrap; }
+
+        /* ─── Awards ────────────────────────────────────────── */
+        .award-item {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 13px;
+            color: var(--mid);
+        }
+
+        .award-bullet {
+            color: var(--blue);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ─── Print styles ───────────────────────────────────── */
+        @media print {
+            body { background: white; font-size: 12px; }
+
+            .toolbar { display: none; }
+
+            .page {
+                margin: 0;
+                padding: 28px 36px;
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+
+            a { color: inherit; }
+
+            .entry { page-break-inside: avoid; }
+        }
+
+        @page {
+            size: letter;
+            margin: 0.5in;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toolbar (hidden on print) -->
+    <div class="toolbar">
+        <span>Barsha Chaudhary — Resume</span>
+        <div class="toolbar-actions">
+            <a href="index.html" class="btn-back">← Portfolio</a>
+            <button class="btn-print" onclick="window.print()">Save as PDF</button>
+        </div>
+    </div>
+
+    <!-- Resume page -->
+    <div class="page">
+
+        <!-- ── Header ── -->
+        <header class="resume-header">
+            <h1>Barsha Chaudhary</h1>
+            <p class="title">Software Engineer</p>
+            <div class="contact-row">
+                <span>Seattle, WA</span>
+                <a href="mailto:barshachy00@gmail.com">barshachy00@gmail.com</a>
+                <a href="https://www.linkedin.com/in/barshachaudhary/" target="_blank">linkedin.com/in/barshachaudhary</a>
+                <a href="https://github.com/BarshaC" target="_blank">github.com/BarshaC</a>
+            </div>
+        </header>
+
+        <!-- ── Education ── -->
+        <section class="section">
+            <h2 class="section-heading">Education</h2>
+            <div class="edu-entry">
+                <div>
+                    <div class="edu-school">Howard University — Washington, D.C.</div>
+                    <div class="edu-degree">B.S. Computer Science · Minor in Mathematics</div>
+                    <div class="edu-gpa">GPA: 3.84 / 4.00</div>
+                </div>
+                <div class="edu-date">Graduated Dec 2024</div>
+            </div>
+        </section>
+
+        <!-- ── Experience ── -->
+        <section class="section">
+            <h2 class="section-heading">Experience</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Microsoft</span>
+                    <span class="entry-date">Feb 2025 – Present</span>
+                </div>
+                <div class="entry-subtitle">Software Engineer</div>
+                <div class="entry-location">Redmond, WA</div>
+                <ul>
+                    <li>Own full-lifecycle ASR model customization for enterprise customers — directing domain-specific data curation, model training, experimental evaluation, and production deployment to meet customer accuracy requirements</li>
+                    <li>Architected an ASR Diagnostics AI Agent in C# using Semantic Kernel that autonomously reproduces reported speech recognition failures, classifies error patterns, and surfaces targeted fix recommendations — replacing manual triage with automated diagnosis</li>
+                    <li>Engineered an Azure AI Search–powered entity extraction pipeline that auto-generates domain-specific phrase lists and curated training corpora, accelerating Speech-to-Text model adaptation for new customer verticals</li>
+                    <li>Collaborate cross-functionally with enterprise customers to define accuracy benchmarks, interpret model evaluation metrics, and iterate on recognition improvements — bridging technical implementation with measurable business outcomes</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Google</span>
+                    <span class="entry-date">May – Aug 2024</span>
+                </div>
+                <div class="entry-subtitle">Software Engineering Intern</div>
+                <div class="entry-location">Seattle, WA</div>
+                <ul>
+                    <li>Engineered an automated test migration framework in Java that parses a proprietary UI scripting DSL and deterministically generates equivalent Java test code with full coverage parity</li>
+                    <li>Designed the end-to-end translation pipeline — spanning lexical parsing, semantic mapping, and test file auto-generation — handling edge cases and preserving test behavior across migrated files</li>
+                    <li>Achieved 80% automation coverage across all migration cases, eliminating weeks of manual engineering effort and unblocking team-wide test infrastructure modernization</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Google</span>
+                    <span class="entry-date">May – Aug 2023</span>
+                </div>
+                <div class="entry-subtitle">Software Engineering Intern (STEP)</div>
+                <div class="entry-location">Los Angeles, CA</div>
+                <ul>
+                    <li>Built a real-time server monitoring dashboard for the Google Drive Restore team, surfacing live server health, error rates, and process latency to enable proactive incident detection</li>
+                    <li>Designed and implemented the full observability pipeline in Kotlin, Java, and SQL — from live metrics ingestion and storage to dashboard visualization of critical internal system state</li>
+                    <li>Drove end-to-end delivery alongside an intern partner — owning requirements definition, data modeling, UI implementation, and testing within a 12-week cycle</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Meta</span>
+                    <span class="entry-date">May – Aug 2022</span>
+                </div>
+                <div class="entry-subtitle">Meta University Engineering Intern</div>
+                <div class="entry-location">Seattle, WA</div>
+                <ul>
+                    <li>Built and shipped a full-featured peer-to-peer Android marketplace for used textbook exchange — supporting real-time listings, in-app messaging, and map-based seller discovery</li>
+                    <li>Integrated Google Books API, Google Maps API, Firebase, and Back4App to power geolocation-based discovery, real-time chat, and persistent cross-session data storage</li>
+                    <li>Implemented MVVM architecture with fragment navigation, API pagination, and real-time data sync — delivering a production-quality Android app with full lifecycle management in Java</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- ── Projects ── -->
+        <section class="section">
+            <h2 class="section-heading">Projects</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">Beats — 🏆 First Place, Google HBCU Hackathon 2024</span>
+                </div>
+                <div class="entry-subtitle">React Native · Gemini Generative AI</div>
+                <ul>
+                    <li>Award-winning mobile app that uses Gemini generative AI to recommend and discover music based on mood and context</li>
+                    <li>Built cross-platform for iOS and Android using React Native</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">BisonBot</span>
+                </div>
+                <div class="entry-subtitle">React · OpenAI API</div>
+                <ul>
+                    <li>AI-powered chatbot built for Howard University students to get answers to campus-related questions</li>
+                    <li>Implements contextual conversation memory and university-specific knowledge retrieval using the OpenAI API</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- ── Skills ── -->
+        <section class="section">
+            <h2 class="section-heading">Skills</h2>
+            <div class="skills-table">
+                <span class="skills-label">Languages</span>
+                <span class="skills-value">Python, Java, Kotlin, C/C++, C#, Swift, JavaScript, HTML/CSS, SQL</span>
+
+                <span class="skills-label">Frameworks</span>
+                <span class="skills-value">React.js, React Native, Django, Flask, Semantic Kernel, Selenium, Bazel, REST APIs</span>
+
+                <span class="skills-label">Cloud & AI</span>
+                <span class="skills-value">Azure Speech Services, Azure OpenAI, Azure AI Search, Azure Language Service, Azure Cosmos DB</span>
+
+                <span class="skills-label">Databases</span>
+                <span class="skills-value">MySQL, MongoDB, Firebase, Back4App</span>
+
+                <span class="skills-label">Tools</span>
+                <span class="skills-value">Git, GitLab, Mercurial, Android Studio, Xcode</span>
+            </div>
+        </section>
+
+        <!-- ── Awards ── -->
+        <section class="section">
+            <h2 class="section-heading">Awards & Scholarships</h2>
+
+            <div class="award-item">
+                <span class="award-bullet">▸</span>
+                <span><strong>First Place</strong> — Google HBCU Hackathon 2024 (Beats)</span>
+            </div>
+            <div class="award-item">
+                <span class="award-bullet">▸</span>
+                <span><strong>Google Capacity Scholarship</strong> — Google Scholarship Fund, 2022</span>
+            </div>
+            <div class="award-item">
+                <span class="award-bullet">▸</span>
+                <span><strong>Goldman Sachs Scholar</strong> — Market Madness: HBCU Possibilities Program, 2022</span>
+            </div>
+        </section>
+
+    </div><!-- /page -->
+
+</body>
+</html>
