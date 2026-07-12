@@ -18,7 +18,9 @@ barshawebsite/
 ├── index.html      # Main HTML file with all content sections
 ├── styles.css      # Styling and responsive design
 ├── script.js       # Interactive features and animations
-├── resume.pdf      # Your resume PDF (add this file)
+├── resume.html     # Online resume page
+├── blog.html       # Blog listing page
+├── blog/           # One HTML file per blog post (e.g. blog/ai-ml-for-coders.html)
 └── README.md       # This file
 ```
 
@@ -53,54 +55,35 @@ npx serve
 # Then visit http://localhost:8000
 ```
 
-## 🌐 Hosting Options
+## 🌐 How This Site Is Actually Deployed
 
-### Option 1: GitHub Pages (Free & Easy)
+This repo is connected to **Netlify**, which auto-deploys on every push to `main`. There is no manual "release" step — pushing to GitHub *is* the release.
 
-1. Create a new GitHub repository
-2. Push your code:
+- **Live site:** [barshachaudhary.com](https://barshachaudhary.com)
+- **GitHub repo:** [github.com/BarshaC/barshawebsite](https://github.com/BarshaC/barshawebsite)
+- **Host:** Netlify (site settings, deploy logs, and custom domain config live in the Netlify dashboard at [app.netlify.com](https://app.netlify.com) — not in this repo; there's no `netlify.toml` checked in)
+- Netlify also applies "pretty URLs" automatically, so `resume.html` and `blog.html` serve at `/resume` and `/blog` on the live site even though the repo keeps the `.html` filenames.
+
+> Note: `barshac.github.io` is a separate, older GitHub Pages site unrelated to this repo — don't confuse the two.
+
+### Step-by-step: updating and publishing the live site
+
+1. **Make your edits** to `index.html`, `blog.html`, files under `blog/`, `styles.css`, or `script.js`.
+2. **Preview locally** before pushing:
    ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/yourusername/your-repo.git
-   git push -u origin main
+   python3 -m http.server 8000
+   # then open http://localhost:8000 in your browser
    ```
-3. Go to repository Settings → Pages
-4. Select "Deploy from a branch" → Choose `main` branch
-5. Your site will be live at: `https://yourusername.github.io/your-repo/`
-
-### Option 2: Netlify (Free & Feature-Rich)
-
-1. Create account at [netlify.com](https://www.netlify.com)
-2. Drag and drop your project folder to Netlify
-3. Or connect your GitHub repository for automatic deployments
-4. Get a free subdomain: `yoursite.netlify.app`
-5. Optional: Add custom domain
-
-### Option 3: Vercel (Free & Fast)
-
-1. Create account at [vercel.com](https://vercel.com)
-2. Import your GitHub repository
-3. Deploy with one click
-4. Get free subdomain: `yoursite.vercel.app`
-5. Optional: Add custom domain
-
-### Option 4: Cloudflare Pages (Free & Global)
-
-1. Create account at [pages.cloudflare.com](https://pages.cloudflare.com)
-2. Connect your GitHub repository
-3. Configure build settings (none needed for static site)
-4. Deploy and get a free subdomain
-5. Benefit from Cloudflare's global CDN
-
-### Option 5: Custom Domain with Traditional Hosting
-
-1. Purchase domain from Namecheap, GoDaddy, or Google Domains
-2. Get hosting from Bluehost, HostGator, or similar
-3. Upload files via FTP or cPanel File Manager
-4. Point your domain to the hosting server
+3. **Stage and commit** your changes:
+   ```bash
+   git add <files you changed>
+   git commit -m "Describe what changed"
+   ```
+4. **Push to GitHub:**
+   ```bash
+   git push origin main
+   ```
+5. **That's it — Netlify picks up the push automatically** and rebuilds/redeploys the site, usually within a minute or two. You can watch the deploy progress in the Netlify dashboard for this site, or just refresh [barshachaudhary.com](https://barshachaudhary.com) after a minute to confirm the change is live.
 
 ## 🎨 Customization
 
