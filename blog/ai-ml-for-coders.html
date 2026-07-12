@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI and ML for Coders: A Practical First Book for Busy Engineers · Barsha's Blog</title>
+    <meta name="description" content="A working software engineer's honest take on Laurence Moroney's AI and Machine Learning for Coders: why it's a good entry point into ML, and two caveats worth knowing before you buy it.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --rose:    #e11d48;
+            --rose-dark: #9f1239;
+            --amber:   #f59e0b;
+            --text:    #1a0a0a;
+            --muted:   #78716c;
+            --border:  #f0e0d8;
+            --bg:      #fdf8f5;
+            --white:   #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ── Nav ── */
+        .nav {
+            background: rgba(253,248,245,0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.9rem 0;
+        }
+
+        .nav-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-back {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--rose);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: gap 0.2s ease;
+        }
+
+        .nav-back:hover { gap: 0.6rem; }
+
+        .nav-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            opacity: 0.6;
+        }
+
+        /* ── Article header ── */
+        .article-header {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 64px 24px 32px;
+        }
+
+        .post-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--rose);
+            margin-bottom: 0.9rem;
+        }
+
+        .article-header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .post-meta {
+            font-size: 0.88rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ── Article body ── */
+        .article-body {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 16px 24px 80px;
+            font-size: 1.05rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.4rem;
+            color: #3a2a26;
+        }
+
+        .article-body h2 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin: 2.4rem 0 1rem;
+        }
+
+        .article-body ul {
+            margin: 0 0 1.4rem 1.3rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.7rem;
+            color: #3a2a26;
+        }
+
+        .article-body strong { color: var(--text); }
+
+        .article-body em { color: var(--muted); }
+
+        .book-callout {
+            border-left: 3px solid var(--amber);
+            background: #fff9f0;
+            padding: 1.1rem 1.4rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.6rem;
+            font-size: 0.98rem;
+            color: #57433a;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 24px;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--muted);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        footer a {
+            color: var(--rose);
+            font-weight: 600;
+        }
+
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../blog.html" class="nav-back">← Blog</a>
+            <span class="nav-title">Barsha's Blog</span>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <p class="post-tag">Reading Notes</p>
+        <h1>AI and Machine Learning for Coders: A Practical First Book for Busy Engineers</h1>
+        <p class="post-meta">July 11, 2026 · 5 min read</p>
+    </header>
+
+    <main class="article-body">
+        <p>I've been a software engineer for a little over a year now, mostly doing backend work with a bit of mobile app development mixed in. For a long time, I actively dodged learning ML/AI deeply. I kept telling myself: what's the use of this if it has no place in the field I actually work in?</p>
+
+        <p>Not anymore. The day-to-day of being a SWE has changed fast: we prompt more than we write code these days. I'm surrounded by people casually throwing around words like encoders, neural networks, decoders, and "which AI framework are you using," and I needed a real starting point so I could actually understand how this stuff works instead.</p>
+
+        <p>I learn best by coding, which is how I stumbled onto a secondhand copy of <em>AI and Machine Learning for Coders</em>. It wasn't my first attempt at getting into AI/ML, despite having interest and experience in mobile app development. Every time before this, I bounced off. Most "get started with ML" resources assume you either want a PhD or already have one: dense math notation, papers instead of tutorials, frameworks explained by people who've clearly never had to ship something on a deadline.</p>
+
+        <p>This one's different. It's by Laurence Moroney, who spent a decade as Google's Lead AI Advocate teaching TensorFlow to developers and built the DeepLearning.AI TensorFlow certificate on Coursera that this book is based on. A few chapters in, I think it might be the best "first book" for someone like me: a coder who wants to actually build things with ML, not necessarily derive backpropagation from scratch on a whiteboard.</p>
+
+        <div class="book-callout">
+            <strong>AI and Machine Learning for Coders</strong>, by Laurence Moroney (O'Reilly). A code-first introduction to ML built around TensorFlow/Keras, aimed squarely at software engineers rather than researchers.
+        </div>
+
+        <h2>Why it works for busy SWEs</h2>
+
+        <ul>
+            <li><strong>Code first, math later (if ever).</strong> Every concept, from a single neuron to a full CNN, is introduced with a working code snippet you can run in Colab in under five minutes. You build intuition by watching the model actually do something, then the book unpacks why.</li>
+            <li><strong>Familiar tools.</strong> It's built entirely around TensorFlow/Keras, so if you've touched Python and a bit of NumPy, there's basically no ramp-up.</li>
+            <li><strong>Practical breadth over academic depth.</strong> In a few hundred pages you go from basic classifiers to computer vision (CNNs), NLP, sequence models, and even deploying models on-device with TensorFlow Lite. It's less "here's the whole field" and more "here's enough of the whole field that you know where to go deep."</li>
+            <li><strong>Short, dense chapters.</strong> Each one is scoped tightly enough that I can get through one in a lunch break, which matters a lot when your calendar looks like mine.</li>
+        </ul>
+
+        <h2>Two honest caveats</h2>
+
+        <p>Before you go buy it, two things worth knowing that I only picked up on after digging through other readers' reviews. First, the title is a little dated in 2026: this book was written before the LLM boom, so it's about "classical" deep learning with TensorFlow: computer vision, NLP, sequence models. There's nothing here on transformers, agents, or prompting. If you came for ChatGPT-era AI, this isn't that book. Second, it's genuinely a hands-on-or-nothing book: the explanations are brief by design, and if you just read it without running the code alongside it, you won't retain much. It rewards people who open Colab and actually type things in.</p>
+
+        <h2>Do I recommend it?</h2>
+
+        <p>Yes, with those caveats in mind. This isn't the book if you want to understand ML deeply from first principles: the math, the theory, why gradient descent converges the way it does. It's the book if you want to stop being intimidated by ML and start being dangerous with it. For a working engineer, that's honestly the more useful starting point: build something, get curious about what's under the hood, and <em>then</em> go deep on theory (or straight into LLMs) once you know which parts you actually care about.</p>
+    </main>
+
+    <footer>
+        <p>By <a href="../index.html">Barsha Chaudhary</a></p>
+    </footer>
+
+</body>
+</html>

@@ -210,6 +210,28 @@ if (avatarStack) {
     });
 }
 
+// LinkedIn-style tenure duration — computed from data-start on load, never hand-edited
+function formatTenure(startStr) {
+    const [startYear, startMonth] = startStr.split('-').map(Number);
+    const start = new Date(startYear, startMonth - 1, 1);
+    const now = new Date();
+
+    let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth()) + 1;
+    if (months < 1) months = 1;
+
+    const years = Math.floor(months / 12);
+    const remMonths = months % 12;
+
+    const parts = [];
+    if (years > 0) parts.push(`${years} yr${years > 1 ? 's' : ''}`);
+    if (remMonths > 0 || years === 0) parts.push(`${remMonths} mo${remMonths !== 1 ? 's' : ''}`);
+    return parts.join(' ');
+}
+
+document.querySelectorAll('[data-start]').forEach(el => {
+    el.textContent += ` · ${formatTenure(el.dataset.start)}`;
+});
+
 // Console welcome message
 console.log('%c Welcome to Barsha\'s Portfolio! ', 'background: #2563eb; color: white; font-size: 16px; padding: 10px;');
 console.log('%c Built with ❤️ using vanilla HTML, CSS, and JavaScript ', 'color: #6b7280; font-size: 12px;');
